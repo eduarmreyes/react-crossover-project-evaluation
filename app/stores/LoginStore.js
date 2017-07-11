@@ -6,6 +6,7 @@ class LoginStore {
 		this.bindActions(LoginActions);
 		this.username = '';
 		this.password = '';
+		this.jwt = '';
 	}
 
 	onUpdateUsername(event) {
@@ -16,8 +17,16 @@ class LoginStore {
 		this.password = event.target.value;
 	}
 
+	onIsLoggedIn(payload) {
+		this.jwt = localStorage.getItem('jwt') || '';
+		if (this.jwt) {
+			payload.history.pushState(null, '/home/');
+		} else {
+			payload.history.pushState(null, '/');
+		}
+	}
+
 	onLoginUserSuccess(payload) {
-		debugger;
 		if (payload.error) {
 			this.password = '';
 			payload.loginForm.classList.add('shake');
@@ -31,6 +40,7 @@ class LoginStore {
 		let jwt = payload.sessionId;
 
 		localStorage.setItem('jwt', jwt);
+		this.jwt = jwt;
 
 		payload.history.pushState(null, '/home/');
 	}
@@ -42,6 +52,10 @@ class LoginStore {
 			payload.loginForm.classList.remove('shake');
 		}, 1000);
 		toastr.error("Error while requesting your login, please check your Backend API accepts Crossorigin Requests");
+	}
+
+	onRedirectToHome(payload) {
+		payload.history.pushState(null, '/home/');
 	}
 }
 

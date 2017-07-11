@@ -8,6 +8,8 @@ class LoginActions {
 			'updatePassword',
 			'loginUserSuccess',
 			'loginUserFail',
+			'isLoggedIn',
+			'redirectToHome',
 		);
 	}
 

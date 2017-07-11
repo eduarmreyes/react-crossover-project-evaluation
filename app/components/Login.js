@@ -12,7 +12,10 @@ class Login extends Component {
 
 	componentDidMount() {
 		LoginStore.listen(this.onChange);
-		// LoginActions.getLoggedInUser();
+
+		LoginActions.isLoggedIn({
+			history: this.props.history
+		});
 	}
 
 	componentWillUnmount() {
