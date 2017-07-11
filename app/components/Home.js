@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LoginActions from '../actions/LoginActions';
+import Navbar from './Navbar';
 
 class Home extends Component {
 	componentDidMount() {
@@ -10,8 +11,9 @@ class Home extends Component {
 
   render() {
     return (
-      <div className='alert alert-info'>
-        Hello from Home Component
+      <div>
+        <Navbar />
+        <p>Hello from Home Component</p>
       </div>
     );
   }

@@ -6,11 +6,10 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-// var async = require('async');
-// var colors = require('colors');
-// var mongoose = require('mongoose');
-// var request = require('request');
-// var _ = require('underscore');
+var async = require('async');
+var colors = require('colors');
+var request = require('request');
+var _ = require('underscore');
 var swig  = require('swig');
 
 var React = require('react');
@@ -60,9 +59,9 @@ app.use(function(err, req, res, next) {
 /**
  * Socket.io stuff.
  */
-// var server = require('http').createServer(app);
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
 var onlineUsers = 0;
-/*var io = require('socket.io')(server);
 
 io.sockets.on('connection', function(socket) {
   onlineUsers++;
@@ -74,10 +73,9 @@ io.sockets.on('connection', function(socket) {
     io.sockets.emit('onlineUsers', { onlineUsers: onlineUsers });
   });
 });
-*/
 
 // api routes
 
-app.listen(app.get('port'), function() {
+server.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port') + '. With online users ' + onlineUsers);
 });
