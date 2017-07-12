@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import LazyLoad from 'react-lazyload';
 import VideosListStore from '../stores/VideosListStore';
 import VideosListActions from '../actions/VideosListActions';
 import RateVideo from './RateVideo';
@@ -29,25 +30,27 @@ class VideosList extends Component {
 		let videosList = this.state.videos.map((video, index) => {
 			const videoId = video._id;
 			return(
-				<li key={ videoId } className='animated fadeIn'>
-					<div className='media'>
-						<h4 className='media-heading'>{ video.name }</h4>
-						<div className='media-middle'>
-							<div className='embed-responsive embed-responsive-16by9'>
-								<Link to={ `/videos/${videoId} ` }>
-									<video className='media-object embed-responsive-item' src={ `http://localhost:3000/${video.url}` } controls>
-									</video>
-								</Link>
+			  <LazyLoad height={ 200 } once>
+					<li key={ videoId } className='animated fadeIn'>
+						<div className='media'>
+							<h4 className='media-heading'>{ video.name }</h4>
+							<div className='media-middle'>
+								<div className='embed-responsive embed-responsive-16by9'>
+									<Link to={ `/videos/${videoId} ` }>
+										<video className='media-object embed-responsive-item' src={ `http://localhost:3000/${video.url}` } controls>
+										</video>
+									</Link>
+								</div>
+							</div>
+							<div className='media-body'>
+								<div className='media-content'>
+									<RateVideo videoId={ video._id } ratings={ video.ratings } />
+									<p className='block-with-text'>{ video.description }</p>
+								</div>
 							</div>
 						</div>
-						<div className='media-body'>
-							<div className='media-content'>
-								<RateVideo videoId={ video._id } ratings={ video.ratings } />
-								<p className='block-with-text'>{ video.description }</p>
-							</div>
-						</div>
-					</div>
-				</li>
+					</li>
+			  </LazyLoad>
 			);
 		})
 		return(
