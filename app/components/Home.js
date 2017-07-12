@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LoginActions from '../actions/LoginActions';
 import Navbar from './Navbar';
+import VideosList from './VideosList';
 
 class Home extends Component {
 	componentDidMount() {
@@ -13,7 +14,7 @@ class Home extends Component {
     return (
       <div>
         <Navbar />
-        <p>Hello from Home Component</p>
+        <VideosList />
       </div>
     );
   }

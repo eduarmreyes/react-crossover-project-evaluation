@@ -19,16 +19,6 @@ class Navbar extends Component {
     socket.on('onlineUsers', (data) => {
       NavbarActions.updateOnlineUsers(data);
     });
-
-    /*$(document).ajaxStart(() => {
-      NavbarActions.updateAjaxAnimation('fadeIn');
-    });
-
-    $(document).ajaxComplete(() => {
-      setTimeout(() => {
-        NavbarActions.updateAjaxAnimation('fadeOut');
-      }, 750);
-    });*/
   }
 
   componentWillUnmount() {
@@ -41,16 +31,6 @@ class Navbar extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
-    /*let searchQuery = this.state.searchQuery.trim();
-
-    if (searchQuery) {
-      NavbarActions.findCharacter({
-        searchQuery: searchQuery,
-        searchForm: this.refs.searchForm,
-        history: this.props.history
-      });
-    }*/
   }
 
   render() {
