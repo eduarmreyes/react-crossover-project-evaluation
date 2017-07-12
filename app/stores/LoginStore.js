@@ -27,8 +27,8 @@ class LoginStore {
 	}
 
 	onLoginUserSuccess(payload) {
+		this.password = '';
 		if (payload.error) {
-			this.password = '';
 			payload.loginForm.classList.add('shake');
 			setTimeout(() => {
 				payload.loginForm.classList.remove('shake');
@@ -41,6 +41,8 @@ class LoginStore {
 
 		localStorage.setItem('jwt', jwt);
 		this.jwt = jwt;
+
+		this.username = '';
 
 		payload.history.pushState(null, '/home/');
 	}
