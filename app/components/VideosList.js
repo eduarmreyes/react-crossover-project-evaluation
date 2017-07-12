@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import VideosListStore from '../stores/VideosListStore';
 import VideosListActions from '../actions/VideosListActions';
+import RateVideo from './RateVideo';
 
 class VideosList extends Component {
 	constructor(props) {
@@ -27,11 +28,6 @@ class VideosList extends Component {
 	render() {
 		let videosList = this.state.videos.map((video, index) => {
 			const videoId = video._id;
-			const ratingSum = video.ratings.reduce((a, b) => {
-				return a + b;
-			});
-			let ratingAvg = ratingSum / video.ratings.length;
-			let ratingValueMax = video.ratings.length * 5;
 			return(
 				<li key={ videoId } className='animated fadeIn'>
 					<div className='media'>
@@ -46,7 +42,7 @@ class VideosList extends Component {
 						</div>
 						<div className='media-body'>
 							<div className='media-content'>
-								<p><i className='fa fa-star-o'></i> <i className='fa fa-star-o'></i> <i className='fa fa-star-o'></i> <i className='fa fa-star-o'></i> <i className='fa fa-star-o'></i></p>
+								<RateVideo videoId={ video._id } ratings={ video.ratings } />
 								<p className='block-with-text'>{ video.description }</p>
 							</div>
 						</div>
