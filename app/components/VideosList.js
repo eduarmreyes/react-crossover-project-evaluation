@@ -30,13 +30,13 @@ class VideosList extends Component {
 		let videosList = this.state.videos.map((video, index) => {
 			const videoId = video._id;
 			return(
-			  <LazyLoad height={ 200 } once>
-					<li key={ videoId } className='animated fadeIn'>
+			  <LazyLoad height={ 200 } once key={ videoId } >
+					<li className='animated fadeIn'>
 						<div className='media'>
 							<h4 className='media-heading'>{ video.name }</h4>
 							<div className='media-middle'>
 								<div className='embed-responsive embed-responsive-16by9'>
-									<Link to={ `/videos/${videoId} ` }>
+									<Link to={ `/video/${videoId} ` }>
 										<video className='media-object embed-responsive-item' src={ `http://localhost:3000/${video.url}` } controls>
 										</video>
 									</Link>
@@ -54,18 +54,16 @@ class VideosList extends Component {
 			);
 		})
 		return(
-			<section className='content'>
-				<div className='box box-green'>
-					<div className='box-header with-border'>
-		        <h3 className='box-title'><i className='fa fa-file-video-o'></i> Videos List</h3>
-		      </div>
-		      <div className='box-body'>
-						<ul className='list-inline'>
-							{ videosList }
-						</ul>
-		      </div>
-				</div>
-			</section>
+			<div className='box box-green'>
+				<div className='box-header with-border'>
+	        <h3 className='box-title'><i className='fa fa-file-video-o'></i> Videos List</h3>
+	      </div>
+	      <div className='box-body'>
+					<ul className='list-inline'>
+						{ videosList }
+					</ul>
+	      </div>
+			</div>
 		);
 	}
 }

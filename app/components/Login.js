@@ -45,7 +45,6 @@ class Login extends Component {
 
 	render() {
 		return(
-			//
 			<div className='login-box'>
 			  <div className='login-logo'>
 			    <b>Crossover</b> ReactPE

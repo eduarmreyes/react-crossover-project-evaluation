@@ -14,7 +14,9 @@ class Home extends Component {
     return (
       <div>
         <Navbar />
-        <VideosList />
+        <div className='content'>
+          <VideosList />
+        </div>
       </div>
     );
   }

@@ -1,25 +1,24 @@
 import alt from '../alt';
-import RateVideoActions from '../actions/RateVideoActions';
+import VideoDetailActions from '../actions/VideoDetailActions';
 
-class RateVideoStore {
+class VideoDetailStore {
 	constructor() {
-		this.bindActions(RateVideoActions);
-		this.video = {};
+		this.bindActions(VideoDetailActions);
+		this.video = [];
 	}
 
-	onRateVideoSuccess(response) {
+	onGetVideoSuccess(response) {
 		if (response.status === "success") {
 			this.video = response.data;
-			toastr.success(`Your rating was ${response.status}fully recorded.`);
 		} else {
 			toastr.error(response.error);
 		}
 	}
 
-	onRateVideoFail(jqXhr) {
+	onGetVideoFail(jqXhr) {
   	let errorMessage = jqXhr.responseJSON && jqXhr.responseJSON.error || jqXhr.responseText || jqXhr.statusText;
 		toastr.error(errorMessage);
 	}
 }
 
-export default alt.createStore(RateVideoStore);
+export default alt.createStore(VideoDetailStore);
