@@ -22,7 +22,7 @@ class LoginStore {
 		if (!this.jwt && payload.history) {
 			payload.history.pushState(null, '/');
 		}
-		if (window.location.pathname === '/' && payload.history) {
+		if (this.jwt && window.location.pathname === '/' && payload.history) {
 			payload.history.pushState(null, '/home');
 		}
 	}

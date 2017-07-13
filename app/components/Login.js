@@ -40,6 +40,11 @@ class Login extends Component {
 				loginForm: this.refs.loginForm,
 				history: this.props.history
 			});
+		} else {
+			if (typeof toastr !== 'undefined') {
+				toastr.error('Provide your username and password please.');
+			}
+			event.target.classList.add('has-error');
 		}
 	}
 

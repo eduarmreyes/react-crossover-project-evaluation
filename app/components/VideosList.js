@@ -37,7 +37,7 @@ class VideosList extends Component {
 							<div className='media-middle'>
 								<div className='embed-responsive embed-responsive-16by9'>
 									<a href={ `/video/${videoId} ` }>
-										<video className='media-object embed-responsive-item' src={ `http://localhost:3000/${video.url}` } controls>
+										<video className='media-object embed-responsive-item' src={ `http://localhost:3000/${video.url}` } no-controls>
 										</video>
 									</a>
 								</div>
