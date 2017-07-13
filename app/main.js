@@ -1,12 +1,20 @@
 import React from 'react';
-import Router from 'react-router';
 import ReactDOM from 'react-dom';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
-import routes from './routes';
+import { createStore, combineReducers } from 'redux'
+import { Provider } from 'react-redux'
+import { routerReducer } from 'react-router-redux'
+import Root from './routes';
 
-let history = createBrowserHistory();
+const store = createStore(
+  combineReducers({
+    routing: routerReducer
+  });
+);
 
 ReactDOM.render(
-	<Router history={ history }>{ routes }</Router>,
+  <Provider store={ store }>
+    { /* Tell the Router to use our enhanced history */ }
+    { Root }
+  </Provider>,
 	document.getElementById('app')
 );

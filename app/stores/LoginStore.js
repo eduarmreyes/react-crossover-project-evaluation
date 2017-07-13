@@ -19,9 +19,7 @@ class LoginStore {
 
 	onIsLoggedIn(payload) {
 		this.jwt = localStorage.getItem('jwt') || '';
-		if (this.jwt) {
-			payload.history.pushState(null, '/home/');
-		} else {
+		if (!this.jwt) {
 			payload.history.pushState(null, '/');
 		}
 	}

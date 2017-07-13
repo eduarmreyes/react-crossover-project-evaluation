@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import LoginStore from '../stores/LoginStore';
 import LoginActions from '../actions/LoginActions';
 
-class Login extends Component {
+class Login extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -47,7 +47,6 @@ class Login extends Component {
 
 	render() {
 		return(
-			//
 			<div className='login-box'>
 			  <div className='login-logo'>
 			    <b>Crossover</b> ReactPE
