@@ -30,8 +30,8 @@ class VideosList extends Component {
 		let videosList = this.state.videos.map((video, index) => {
 			const videoId = video._id;
 			return(
-			  <LazyLoad height={ 200 } once>
-					<li key={ videoId } className='animated fadeIn'>
+			  <LazyLoad height={ 200 } once key={ videoId } >
+					<li className='animated fadeIn'>
 						<div className='media'>
 							<h4 className='media-heading'>{ video.name }</h4>
 							<div className='media-middle'>

@@ -13,9 +13,11 @@ class Login extends Component {
 	componentDidMount() {
 		LoginStore.listen(this.onChange);
 
-		LoginActions.isLoggedIn({
-			history: this.props.history
-		});
+		if (typeof localStorage !== 'undefined') {
+			LoginActions.isLoggedIn({
+				history: this.props.history
+			});
+		}
 	}
 
 	componentWillUnmount() {
@@ -56,11 +58,11 @@ class Login extends Component {
 
 			    <form role='form' action={ this.handleSubmit.bind(this) } method='post' ref='loginForm' className='animated'>
 			      <div className='form-group has-feedback'>
-			        <input type='text' className='form-control' placeholder='Username' onChange={ LoginActions.updateUsername } value={ this.state.username } />
+			        <input type='text' className='form-control username' placeholder='Username' onChange={ LoginActions.updateUsername } value={ this.state.username } />
 			        <span className='glyphicon glyphicon-user form-control-feedback'></span>
 			      </div>
 			      <div className='form-group has-feedback'>
-			        <input type='password' className='form-control' placeholder='Password' onChange={ LoginActions.updatePassword } value={ this.state.password } />
+			        <input type='password' className='form-control password' placeholder='Password' onChange={ LoginActions.updatePassword } value={ this.state.password } />
 			        <span className='glyphicon glyphicon-lock form-control-feedback'></span>
 			      </div>
 			      <div className='row'>

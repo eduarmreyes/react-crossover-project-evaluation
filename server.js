@@ -12,11 +12,6 @@ var request = require('request');
 var _ = require('underscore');
 var swig  = require('swig');
 
-var React = require('react');
-var ReactDOM = require('react-dom/server');
-var Router = require('react-router');
-
-
 // config
 
 // routes
@@ -34,27 +29,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // mongoose
 
-app.use(function(req, res) {
-  Router.match({ routes: routes.default, location: req.url }, function(err, redirectLocation, renderProps) {
-    if (err) {
-      res.status(500).send(err.message);
-    } else if (redirectLocation) {
-      res.status(302).redirect(redirectLocation.pathname + redirectLocation.search);
-    } else if (renderProps) {
-      var html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));
-      var page = swig.renderFile('views/index.html', { html: html });
-      res.status(200).send(page);
-    } else {
-      res.status(404).send('Page Not Found');
-    }
-  });
+// Always return the main index.html, so react-router render the route in the client
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve('views/', 'index.html'));
 });
 
-app.use(function(err, req, res, next) {
-  console.log(err.stack.red);
-  res.status(err.status || 500);
-  res.send({ message: err.message });
-});
 
 /**
  * Socket.io stuff.
