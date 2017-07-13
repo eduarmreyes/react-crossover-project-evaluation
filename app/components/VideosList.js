@@ -36,10 +36,10 @@ class VideosList extends Component {
 							<h4 className='media-heading'>{ video.name }</h4>
 							<div className='media-middle'>
 								<div className='embed-responsive embed-responsive-16by9'>
-									<Link to={ `/video/${videoId} ` }>
+									<a href={ `/video/${videoId} ` }>
 										<video className='media-object embed-responsive-item' src={ `http://localhost:3000/${video.url}` } controls>
 										</video>
-									</Link>
+									</a>
 								</div>
 							</div>
 							<div className='media-body'>

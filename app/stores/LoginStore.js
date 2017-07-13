@@ -22,6 +22,9 @@ class LoginStore {
 		if (!this.jwt) {
 			payload.history.pushState(null, '/');
 		}
+		if (window.location.pathname === '/') {
+			payload.history.pushState(null, '/home');
+		}
 	}
 
 	onLoginUserSuccess(payload) {
