@@ -4,8 +4,9 @@ import Login from '../components/Login';
 
 describe('Login', () => {
   it('renders login', () => {
-    const loginElement = TestUtils.renderIntoDocument(<Login />);
-    expect(loginElement).toBeTruthy();
+  	const shallowRenderer = TestUtils.createRenderer();
+  	shallowRenderer.render(<Login />);
+    expect(shallowRenderer).toBeTruthy();
   });
 
   it('should render input.username', () => {
@@ -35,7 +36,7 @@ describe('Login', () => {
 
   it('should shallow render 2 components', () => {
   	const shallowRenderer = TestUtils.createRenderer();
-  	shallowRenderer.render(<Login />)
+  	shallowRenderer.render(<Login />);
   	expect(shallowRenderer.getRenderOutput().props.children.length).toBe(2);
   });
 });
