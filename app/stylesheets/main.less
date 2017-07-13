@@ -97,14 +97,14 @@ footer a {
   li {
     margin-right: 50px;
     margin-bottom: 50px;
-    width: 340px;
+    width: 270px;
   }
 }
 
 .media-content {
 
   p {
-    max-width: 340px;
+    max-width: 270px;
     padding-left: 0.5rem;
 
     .rate-video {
@@ -575,4 +575,20 @@ label {
 
 .shake {
   animation-name: shake;
+}
+
+// responsive
+/* Portrait */
+@media (max-device-width: 568px) {
+  .list-inline li {
+    margin-left:0;
+    width: 100%;
+  }
+}
+
+/* Portrait and Landscape */
+@media (max-device-width: 1023px) {
+  .list-inline li {
+    width: 310px;
+  }
 }
