@@ -31,7 +31,6 @@ class VideoDetail extends Component {
 	}
 
 	renderVideo() {
-		debugger;
 		if (this.state.video) {
 			return (
       	<div className='box box-green'>

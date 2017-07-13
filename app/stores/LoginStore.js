@@ -18,11 +18,11 @@ class LoginStore {
 	}
 
 	onIsLoggedIn(payload) {
-		this.jwt = localStorage.getItem('jwt') || '';
-		if (!this.jwt) {
+		this.jwt = (typeof localStorage !== 'undefined') ? localStorage.getItem('jwt') : '';
+		if (!this.jwt && payload.history) {
 			payload.history.pushState(null, '/');
 		}
-		if (window.location.pathname === '/') {
+		if (window.location.pathname === '/' && payload.history) {
 			payload.history.pushState(null, '/home');
 		}
 	}
